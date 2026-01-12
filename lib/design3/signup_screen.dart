@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/widgets/inputs.dart';
+import 'package:my_app/widgets/labels.dart';
+import 'package:my_app/widgets/buttons.dart';
 
 class SignupScreen3 extends StatefulWidget {
   const SignupScreen3({super.key});
@@ -166,7 +169,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                         ),
                       ),
                       const SizedBox(height: 32),
-                      const GradientButton(text: "Register"),
+                      const PrimaryButton(text: "Register"),
                       const SizedBox(height: 40),
                     ],
                   ),
@@ -180,115 +183,5 @@ class _SignupScreen3State extends State<SignupScreen3> {
   }
 }
 
-class InputLabel extends StatelessWidget {
-  final String text;
-  const InputLabel({super.key, required this.text});
 
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(
-        color: Color(0xFF6C7278),
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
-    );
-  }
-}
 
-class ShadowInput extends StatelessWidget {
-  final String hint;
-  final bool obscureText;
-  final Widget? suffixIcon;
-  final bool readOnly;
-  final VoidCallback? onTap;
-
-  const ShadowInput({
-    super.key,
-    required this.hint,
-    this.obscureText = false,
-    this.suffixIcon,
-    this.readOnly = false,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0xFFEDF1F3)),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFFE4E5E7).withOpacity(0.24),
-            blurRadius: 2,
-            offset: const Offset(0, 1),
-          ),
-        ],
-      ),
-      child: TextField(
-        obscureText: obscureText,
-        readOnly: readOnly,
-        onTap: onTap,
-        style: const TextStyle(
-          color: Color(0xFF1A1C1E),
-          fontWeight: FontWeight.w500,
-        ),
-        decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: const TextStyle(color: Color(0xFF1A1C1E)),
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 14,
-          ),
-          suffixIcon: suffixIcon,
-        ),
-      ),
-    );
-  }
-}
-
-class GradientButton extends StatelessWidget {
-  final String text;
-  const GradientButton({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 48,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: const Color(0xFF1D61E7),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF375DFB).withOpacity(0.48),
-            blurRadius: 2,
-            offset: const Offset(0, 1),
-          ),
-        ],
-      ),
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-    );
-  }
-}

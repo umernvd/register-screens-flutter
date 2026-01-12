@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup_screen.dart';
+import '../widgets/inputs.dart';
+import '../widgets/buttons.dart';
 
 class LoginPage2 extends StatefulWidget {
   const LoginPage2({super.key});
@@ -9,23 +11,7 @@ class LoginPage2 extends StatefulWidget {
 }
 
 class _LoginPage2State extends State<LoginPage2> {
-  bool isPasswordVisible = false;
   bool rememberMe = false;
-
-  // Helper method to enforce DRY (Don't Repeat Yourself) for input fields
-  InputDecoration _inputDecoration(String hint, {Widget? suffixIcon}) {
-    return InputDecoration(
-      hintText: hint,
-      hintStyle: const TextStyle(color: Colors.grey),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Color(0xFFEDF1F3)),
-      ),
-      suffixIcon: suffixIcon,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +35,10 @@ class _LoginPage2State extends State<LoginPage2> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 20),
-
-                    const Icon(Icons.security, color: Colors.white, size: 30),
+                    const Icon(Icons.security, color: Colors.white, size: 40),
                     const SizedBox(height: 20),
-
                     const Text(
-                      "Sign in to your Account",
+                      "Sign in to your\nAccount",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -66,9 +50,8 @@ class _LoginPage2State extends State<LoginPage2> {
                     const SizedBox(height: 12),
                     const Text(
                       "Enter your email and password to log in",
-                      style: TextStyle(color: Color.fromARGB(179, 255, 255, 255), fontSize: 14),
+                      style: TextStyle(color: Colors.white70, fontSize: 14),
                     ),
-
                     const SizedBox(height: 30),
 
                     // Login Card
@@ -78,7 +61,7 @@ class _LoginPage2State extends State<LoginPage2> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
-                         boxShadow: [
+                        boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
                             blurRadius: 10,
@@ -86,31 +69,26 @@ class _LoginPage2State extends State<LoginPage2> {
                           ),
                         ],
                       ),
-                      
                       child: Column(
                         children: [
-                          OutlinedButton.icon(
-                            onPressed: () {},
-                            icon: Image.asset('assets/google.png', height: 24),
-                            label: const Text(
-                              "Continue with Google",
-                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              minimumSize: const Size(double.infinity, 48),
-                              side: BorderSide(color: Colors.grey.shade200),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            ),
+                          // Google Login (Shared Widget)
+                          const SocialButtonOutlined(
+                            text: "Continue with Google",
+                            imagePath: "assets/google.png",
                           ),
 
                           const SizedBox(height: 24),
 
+                          // Divider
                           Row(
                             children: [
                               Expanded(child: Divider(color: Colors.grey.shade200)),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                                child: Text("Or login with", style: TextStyle(color: Colors.grey.shade500, fontSize: 12)),
+                                child: Text(
+                                  "Or login with", 
+                                  style: TextStyle(color: Colors.grey.shade500, fontSize: 12),
+                                ),
                               ),
                               Expanded(child: Divider(color: Colors.grey.shade200)),
                             ],
@@ -118,28 +96,17 @@ class _LoginPage2State extends State<LoginPage2> {
 
                           const SizedBox(height: 24),
 
-                          TextField(
-                            decoration: _inputDecoration("email@domain.com"),
-                          ),
+                          // Email
+                          const StandardTextField(hint: "email@domain.com"),
 
                           const SizedBox(height: 16),
 
-                          TextField(
-                            obscureText: !isPasswordVisible,
-                            decoration: _inputDecoration(
-                              "*******",
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                                  color: Colors.grey,
-                                ),
-                                onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
-                              ),
-                            ),
-                          ),
+                          // Password
+                          const PasswordField(useShadowStyle: false),
 
                           const SizedBox(height: 12),
 
+                          // Remember Me & Forgot Password
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -171,25 +138,17 @@ class _LoginPage2State extends State<LoginPage2> {
 
                           const SizedBox(height: 24),
 
-                          SizedBox(
-                            width: double.infinity,
-                            height: 48,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF1D61E7),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                              ),
-                              child: const Text(
-                                "Log In",
-                                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                            ),
+                          // Login Button (Shared Widget)
+                          PrimaryButton(
+                            text: "Log In",
+                            onPressed: () {
+                              // Login Logic
+                            },
                           ),
 
                           const SizedBox(height: 20),
 
+                          // Sign Up Link
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -197,7 +156,7 @@ class _LoginPage2State extends State<LoginPage2> {
                               GestureDetector(
                                 onTap: () => Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => SignupScreen2()),
+                                  MaterialPageRoute(builder: (context) => const SignupScreen2()),
                                 ),
                                 child: const Text(
                                   "Sign Up",
