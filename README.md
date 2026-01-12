@@ -1,16 +1,57 @@
-# my_app
+# 📱 Register & Login Screens (Flutter)
 
-A new Flutter project.
+A collection of modern, responsive, and professionally designed Login and Sign-Up screen templates built with Flutter. This repository demonstrates various UI layouts, from split-backgrounds to sticky headers, implemented with clean and maintainable code.
 
-## Getting Started
+## ✨ Features
 
-This project is a starting point for a Flutter application.
+* **3 Distinct UI Designs:** Ranging from minimalist layouts to complex split-backgrounds.
+* **Responsive Layouts:** Adapts seamlessly to different screen sizes.
+* **Clean Codebase:** Follows DRY principles with reusable custom widgets (`InputLabel`, `ShadowInput`, `SocialButton`).
+* **Interactive Elements:** Includes custom navigation, checkbox toggles, and password visibility toggles.
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Getting Started
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. **Clone the repository**
+```bash
+git clone https://github.com/umernvd/register-screens-flutter.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+
+
+2. **Navigate to the project directory**
+```bash
+cd register-screens-flutter
+
+```
+
+
+3. **Install dependencies**
+```bash
+flutter pub get
+
+```
+
+
+4. **Run the app**
+```bash
+flutter run
+
+```
+
+
+
+## 📂 Project Structure
+
+* `lib/design1/` - Minimalist Blue Design.
+* `lib/design2/` - Split Blue/White background with a floating white card.
+* `lib/design3/` - Dark Navy background with a sticky header and scrollable form.
+* `lib/main.dart` - Entry point containing navigation to all designs.
+
+## 🛠️ Tech Stack
+
+* **Framework:** [Flutter](https://flutter.dev/)
+* **Language:** [Dart](https://dart.dev/)
+
+---
+
+⭐ **Star this repository if you find it useful!**
